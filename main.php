@@ -16,3 +16,4 @@ class Database
         var_dump($this->conn->error);
     }
 }
+$we = new Database;
