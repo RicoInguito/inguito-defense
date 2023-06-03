@@ -1,17 +1,18 @@
 <?php
 
-abstract class Database
+class Database 
 {
     public $conn;
-    public $servername = "localhost";
-    public $username = "root";
-    public $password = "";
-    public $dbName = "system";
+    public $dbname = "system";
 
     public function __construct()
-    {
-        $this->conn = new mysqli($this->servername, $this->username, $this->password);
-        
+     {
+        $this->conn=new mysqli('localhost', 'root', '');
+        $create="CREATE DATABASE IF NOT EXISTS $this->dbname";
+        $this->conn->query($create);
+        $use="USE $this->dbname";
+        $this->conn->query($use);
+
+        var_dump($this->conn->error);
     }
-    abstract public function db(): string;
 }
