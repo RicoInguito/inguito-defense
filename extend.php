@@ -2,17 +2,17 @@
 
 include 'main.php';
 
-class Province extends Database 
+class Movie extends Database 
 {
-    public $tblname = "province";
+    public $tblname = "movie";
 
     public function createTable()
     {
         $tbl = "CREATE TABLE IF NOT EXISTS $this->tblname(
             id int primary key auto_increment,
-            street varchar(199) not null,
-            barangay varchar(199) not null,
-            municipality varchar(199) not null
+            movie_name varchar(199) not null,
+            author varchar(199) not null,
+            genre varchar(199) not null
              )";
     
              $this->conn->query($tbl);
@@ -26,13 +26,13 @@ class Province extends Database
     }
 
 
-    public function insert($street, $barangay, $municipality)
+    public function insert($mn, $a, $g)
     {
-        $in = "INSERT INTO $this->tblname(street, barangay, municipality)
-        values(NULL, '$street','$barangay', '$municipality)";
+        $in = "INSERT INTO $this->tblname(movie_name, author, genre)
+        values(NULL, '$mn','$a', '$g)";
          
        return $this->conn->query($in);
        var_dump($this->conn->error);
     }
 }
-$province=new Province();
+$province=new Movie();
